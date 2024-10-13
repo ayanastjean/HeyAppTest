@@ -12,10 +12,10 @@ public class AppTest {
     public void testDaysUntilHalloween() {
         GreeterApp greeter = new GreeterApp();
         LocalDate today = LocalDate.now();
-        LocalDate halloween = greeter.getHalloweenDate(today); // Use the method to get Halloween date
+        LocalDate halloween = greeter.getHalloweenDate(today);
 
         long expectedDays = ChronoUnit.DAYS.between(today, halloween);
-        long actualDays = greeter.daysUntilHalloween(); // Call the method to get days until Halloween
+        long actualDays = greeter.daysUntilHalloween();
 
         assertEquals(expectedDays, actualDays);
     }
