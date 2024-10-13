@@ -15,7 +15,7 @@ public class GreeterApp {
         long daysUntilHalloween = ChronoUnit.DAYS.between(today, halloween);
 
         // countdown message
-        System.out.println("Hiya! There are " + daysUntilHalloween + " days until Halloween! Eeeeeeeek!");
+        System.out.println("Hi There! There are " + daysUntilHalloween + " days until Halloween! Eeeeeeeek!");
     }
 
     // halloween
