@@ -3,14 +3,20 @@ package com.greeterapp;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class AppTest {
 
     @Test
-    public void testGreet() {
+    public void testDaysUntilHalloween() {
         GreeterApp greeter = new GreeterApp();
-        String date = java.time.LocalDate.now().toString(); // Get today's date
-        String expected = "Hey Ayana! It is " + date + ". Hope all is well."; // Expected output
-        String actual = greeter.greet("Ayana", date); // Call the greet method with parameters
-        assertEquals(expected, actual);
+        LocalDate today = LocalDate.now();
+        LocalDate halloween = greeter.getHalloweenDate(today); // Use the method to get Halloween date
+
+        long expectedDays = ChronoUnit.DAYS.between(today, halloween);
+        long actualDays = greeter.daysUntilHalloween(); // Call the method to get days until Halloween
+
+        assertEquals(expectedDays, actualDays);
     }
 }
