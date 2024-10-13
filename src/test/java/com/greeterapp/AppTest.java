@@ -8,7 +8,7 @@ public class AppTest {
     @Test
     public void testGreet() {
         GreeterApp greeter = new GreeterApp();
-        String expected = "Hello, Ayana! Welcome to the Greeter App.";
+        String expected = "Hey, Ayana! What's going on?";
         String actual = greeter.greet("Ayana");
         assertEquals(expected, actual);
     }
