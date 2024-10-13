@@ -6,7 +6,7 @@ public class GreeterApp {
 
     // This method returns a greeting message for the given name
     public String greet(String name) {
-        return "Hey, " + name + "! What's going on?";
+        return "Hiya, " + name + "! What's going on?";
     }
 
     public static void main(String[] args) {

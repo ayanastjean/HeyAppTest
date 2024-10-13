@@ -5,6 +5,7 @@
   <groupId>com.greeterapp</groupId>
   <artifactId>GreeterApp</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
@@ -14,20 +15,14 @@
   <dependencies>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.8.2</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>5.8.1</version>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -41,6 +36,44 @@
         <configuration>
           <source>${maven.compiler.source}</source>
           <target>${maven.compiler.target}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.greeterapp.GreeterApp</mainClass> <!-- Updated to the correct main class -->
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+      </plugin>
+
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>3.5.0</version>
+        <configuration>
+          <images>
+            <image>
+              <name>ayanastjean/greeter-app:latest</name>
+              <build>
+                <dockerFile>${project.basedir}/Dockerfile</dockerFile>
+                <args>
+                  <arg>JAR_FILE=target/${project.artifactId}-${project.version}.jar</arg>
+                </args>
+              </build>
+            </image>
+          </images>
         </configuration>
       </plugin>
     </plugins>
