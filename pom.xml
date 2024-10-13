@@ -46,7 +46,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.greeterapp.GreeterApp</mainClass> <!-- Updated to the correct main class -->
+              <mainClass>com.greeterapp.GreeterApp</mainClass>
             </manifest>
           </archive>
         </configuration>

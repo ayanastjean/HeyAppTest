@@ -14,15 +14,15 @@ public class GreeterApp {
         // count days until
         long daysUntilHalloween = ChronoUnit.DAYS.between(today, halloween);
 
-        // Display the countdown message
-        System.out.println("Hey! There are " + daysUntilHalloween + " days until Halloween!");
+        // countdown message
+        System.out.println("Hiya! There are " + daysUntilHalloween + " days until Halloween!");
     }
 
-    // Method to get the date of Halloween
+    // halloween
     public static LocalDate getHalloweenDate(LocalDate today) {
         LocalDate halloween = LocalDate.of(today.getYear(), 10, 31);
 
-        // If Halloween has passed this year, return Halloween of next year
+        // Halloween of next year
         if (today.isAfter(halloween)) {
             halloween = halloween.plusYears(1);
         }
@@ -30,7 +30,7 @@ public class GreeterApp {
         return halloween;
     }
 
-    // Method to calculate days until Halloween
+    // calculate days until Halloween
     public static long daysUntilHalloween() {
         LocalDate today = LocalDate.now();
         LocalDate halloween = getHalloweenDate(today);

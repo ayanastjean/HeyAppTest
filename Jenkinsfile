@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Pull the latest code from the repository
+
                     sh 'git pull origin main'
-                    // Build the application using Maven
+
                     sh 'mvn clean package'
                 }
             }
@@ -25,9 +25,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Deploy your application (this could be a Docker command or any other deployment step)
-                    sh 'docker build -t your-image-name .'
-                    sh 'docker run -d -p 8080:8080 your-image-name'
+
+                    sh 'docker build -t heyapp .'
+                    sh 'docker run -d -p 8081:8080 heyapp'
                 }
             }
         }
