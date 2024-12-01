@@ -1,39 +1,39 @@
 package com.greeterapp;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class GreeterApp {
+    private static final Logger logger = LoggerFactory.getLogger(GreeterApp.class);
 
     public static void main(String[] args) {
-        // today
         LocalDate today = LocalDate.now();
-        // Christmas
         LocalDate christmas = getChristmasDate(today);
-
-        // count days until
         long daysUntilChristmas = ChronoUnit.DAYS.between(today, christmas);
 
-        // countdown message
-        System.out.println("Hello Earthling! There are " + daysUntilChristmas + " days until Halloween! ");
+        logger.info("Application started. Calculating days until Christmas...");
+        logger.info("Hello Earthling! There are {} days until Christmas!", daysUntilChristmas);
+
+        // Keep the application running
+        try {
+            Thread.sleep(Long.MAX_VALUE);
+        } catch (InterruptedException e) {
+            logger.error("Application interrupted!", e);
+        }
     }
 
-    // Christmas date
+    // Method to get the next Christmas date
     public static LocalDate getChristmasDate(LocalDate today) {
-        LocalDate christmas = LocalDate.of(today.getYear(), 10, 31);
+        LocalDate christmas = LocalDate.of(today.getYear(), 12, 25);
 
-        // Christmas of next year
+        // If today is after Christmas, calculate for next year
         if (today.isAfter(christmas)) {
             christmas = christmas.plusYears(1);
         }
 
         return christmas;
-    }
-
-    // calculate days until Christmas
-    public static long daysUntilChristmas() {
-        LocalDate today = LocalDate.now();
-        LocalDate christmas = getChristmasDate(today);
-        return ChronoUnit.DAYS.between(today, christmas);
     }
 }
