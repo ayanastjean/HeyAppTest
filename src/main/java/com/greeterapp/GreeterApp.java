@@ -8,33 +8,32 @@ public class GreeterApp {
     public static void main(String[] args) {
         // today
         LocalDate today = LocalDate.now();
-        // halloween
-        LocalDate halloween = getHalloweenDate(today);
+        // Christmas
+        LocalDate christmas = getChristmasDate(today);
 
         // count days until
-        long daysUntilHalloween = ChronoUnit.DAYS.between(today, halloween);
+        long daysUntilChristmas = ChronoUnit.DAYS.between(today, christmas);
 
         // countdown message
-        System.out.println("Hello Earthling! There are " + daysUntilHalloween + " days until Halloween! Eeeeeeeek!");
+        System.out.println("Hello Earthling! There are " + daysUntilChristmas + " days until Halloween! ");
     }
 
-    // halloween
-    public static LocalDate getHalloweenDate(LocalDate today) {
-        LocalDate halloween = LocalDate.of(today.getYear(), 10, 31);
+    // Christmas date
+    public static LocalDate getChristmasDate(LocalDate today) {
+        LocalDate christmas = LocalDate.of(today.getYear(), 10, 31);
 
-        // Halloween of next year
-        if (today.isAfter(halloween)) {
-            halloween = halloween.plusYears(1);
+        // Christmas of next year
+        if (today.isAfter(christmas)) {
+            christmas = christmas.plusYears(1);
         }
 
-        return halloween;
+        return christmas;
     }
 
-    // calculate days until Halloween
-    public static long daysUntilHalloween() {
+    // calculate days until Christmas
+    public static long daysUntilChristmas() {
         LocalDate today = LocalDate.now();
-        LocalDate halloween = getHalloweenDate(today);
-        return ChronoUnit.DAYS.between(today, halloween);
+        LocalDate christmas = getChristmasDate(today);
+        return ChronoUnit.DAYS.between(today, christmas);
     }
 }
-

@@ -9,14 +9,17 @@ import java.time.temporal.ChronoUnit;
 public class AppTest {
 
     @Test
-    public void testDaysUntilHalloween() {
+    public void testDaysUntilChristmas() {
+        // Create an instance of GreeterApp
         GreeterApp greeter = new GreeterApp();
         LocalDate today = LocalDate.now();
-        LocalDate halloween = greeter.getHalloweenDate(today);
+        LocalDate christmas = greeter.getChristmasDate(today);
 
-        long expectedDays = ChronoUnit.DAYS.between(today, halloween);
-        long actualDays = greeter.daysUntilHalloween();
+        // Calculate expected days until Christmas
+        long expectedDays = ChronoUnit.DAYS.between(today, christmas);
+        long actualDays = greeter.daysUntilChristmas();
 
+        // Assert the calculated days match the expected days
         assertEquals(expectedDays, actualDays);
     }
 }
