@@ -1,25 +1,24 @@
 package com.greeterapp;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
-public class AppTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class GreeterAppTest {
 
     @Test
-    public void testDaysUntilChristmas() {
-        // Create an instance of GreeterApp
-        GreeterApp greeter = new GreeterApp();
-        LocalDate today = LocalDate.now();
-        LocalDate christmas = greeter.getChristmasDate(today);
+    void testGetChristmasDateBeforeChristmas() {
+        LocalDate today = LocalDate.of(2024, 12, 1);
+        LocalDate expected = LocalDate.of(2024, 12, 25);
+        assertEquals(expected, GreeterApp.getChristmasDate(today));
+    }
 
-        // Calculate expected days until Christmas
-        long expectedDays = ChronoUnit.DAYS.between(today, christmas);
-        long actualDays = greeter.daysUntilChristmas();
-
-        // Assert the calculated days match the expected days
-        assertEquals(expectedDays, actualDays);
+    @Test
+    void testGetChristmasDateAfterChristmas() {
+        LocalDate today = LocalDate.of(2024, 12, 26);
+        LocalDate expected = LocalDate.of(2025, 12, 25);
+        assertEquals(expected, GreeterApp.getChristmasDate(today));
     }
 }
